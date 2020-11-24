@@ -4,11 +4,22 @@
 {% block title %}Телефон{% endblock %}
 {% block content %}
     <div class="container">
+        <p><a href="http://127.0.0.1:8000/catalog/">Вернуться в каталог</a> </p>
         <div class="header">
-            <h1>Телефон</h1>
+            <h1>{{val.name}}</h1>
         </div>
         <div class="content">
-
+            Цена: {{val.price}} <br>
+            Дата выпуска: {{val.release_date}} <br>
+            LTE:
+            {% if val.lte_exists %}
+            Есть
+            {%endif%}
+             {% if val.lte_exists == False %}
+            Нет
+            {%endif%}
+            <br>
+            <img src="{{val.image}}" width="25%" align="center" />
         </div>
     </div>
 {% endblock %}

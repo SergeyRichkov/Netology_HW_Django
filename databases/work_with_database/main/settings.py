@@ -52,6 +52,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'netology_import_phones',
+        'USER': 'django_hw_db',
+        'PASSWORD': 'djangoDB',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -93,6 +95,25 @@ TEMPLATES = [
         },
     },
 ]
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler'
+            },
+    },
+    'loggers': {
+        'django.db': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
+
 
 WSGI_APPLICATION = 'main.wsgi.application'
 

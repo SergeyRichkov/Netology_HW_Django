@@ -22,10 +22,6 @@ router = SimpleRouter()
 router.register("project", ProjectViewSet, basename="project")
 router.register("measurement", MeasurementViewSet, basename="measurement")
 
-
-
-# TODO: настройте роутер и подключите `ProjectViewSet` и `MeasurementViewSet`
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),

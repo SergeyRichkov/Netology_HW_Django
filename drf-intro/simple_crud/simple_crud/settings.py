@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'measurements',
+
+
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'simple_crud.wsgi.application'
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    }
+
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -80,7 +86,9 @@ WSGI_APPLICATION = 'simple_crud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_simple_crud',
+        'NAME': 'dj_api1_hw',
+        'USER': 'dj_api',
+        'PASSWORD': 'djapi123',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

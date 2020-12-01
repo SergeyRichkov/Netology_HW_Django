@@ -6,6 +6,6 @@ class Phone(models.Model):
     price = models.FloatField()
     image = models.TextField()
     release_date = models.DateField()
-    slug = models.TextField(default='')
+    slug = models.SlugField()
     lte_exists = models.BooleanField(default=False)
 

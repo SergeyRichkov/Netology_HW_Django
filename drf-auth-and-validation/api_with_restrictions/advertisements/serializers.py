@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
+
 from advertisements.models import Advertisement
 
 
@@ -11,6 +12,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'first_name',
                   'last_name',)
+
+
 
 
 class AdvertisementSerializer(serializers.ModelSerializer):
@@ -27,7 +30,6 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """Метод для создания"""
-
         # Простановка значения поля создатель по-умолчанию.
         # Текущий пользователь является создателем объявления
         # изменить или переопределить его через API нельзя.
@@ -39,7 +41,10 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Метод для валидации. Вызывается при создании и обновлении."""
+        creator = self.context["request"].user.id
 
+        if len(self.context['view'].queryset.filter(creator=creator).filter(status='OPEN')) > 5:
+            raise serializers.ValidationError("Превышение допустимого "
+            "количества опубликованных объявлений")
         # TODO: добавьте требуемую валидацию
-
         return data

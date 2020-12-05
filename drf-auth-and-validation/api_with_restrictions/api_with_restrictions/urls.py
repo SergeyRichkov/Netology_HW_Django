@@ -15,14 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import debug_toolbar
 
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 
-router = DefaultRouter()
+from advertisements.views import AdvertisementViewSet
 # TODO: подключите `AdvertisementViewSet`
+
+router = SimpleRouter()
+router.register("Advertisement", AdvertisementViewSet, basename="Advertisement")
 
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('api/v1/', include(router.urls)),
     path('admin/', admin.site.urls),
-]
+
+    path('__debug__/', include(debug_toolbar.urls)),
+    ]

@@ -87,7 +87,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dj_api1_hw',
-
+        'USER': 'dj_api',
+        'PASSWORD': 'djapi123',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

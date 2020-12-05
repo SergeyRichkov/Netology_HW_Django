@@ -16,11 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
-
 from rest_framework.routers import SimpleRouter
-
 from advertisements.views import AdvertisementViewSet
-# TODO: подключите `AdvertisementViewSet`
+
 
 router = SimpleRouter()
 router.register("Advertisement", AdvertisementViewSet, basename="Advertisement")

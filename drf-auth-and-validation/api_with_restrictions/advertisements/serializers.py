@@ -14,8 +14,6 @@ class UserSerializer(serializers.ModelSerializer):
                   'last_name',)
 
 
-
-
 class AdvertisementSerializer(serializers.ModelSerializer):
     """Serializer для объявления."""
 
@@ -43,8 +41,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         """Метод для валидации. Вызывается при создании и обновлении."""
         creator = self.context["request"].user.id
 
-        if len(self.context['view'].queryset.filter(creator=creator).filter(status='OPEN')) > 5:
+        if len(self.context['view'].queryset.filter(creator=creator).filter(status='OPEN')) > 9:
             raise serializers.ValidationError("Превышение допустимого "
             "количества опубликованных объявлений")
-        # TODO: добавьте требуемую валидацию
         return data

@@ -19,11 +19,13 @@
         <p class="card-text">{{ relation.text }}</p>
       </div>
 
-      {% for scope in relation.article.all %}
+      {% for scope in relation.article.all%}
       {% if scope.is_main %}
           <span class="badge badge-primary">{{scope.section}}</span>
       {% endif %}
+      {% endfor %}
 
+      {% for scope in relation.article.all%}
       {% if scope.is_main == False %}
           <span class="badge badge-secondary">{{scope.section}}</span>
       {% endif %}
